@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Quiz Web App</title>
+    <!-- Link to external minimal style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- --- HOME VIEW --- -->
+        <div id="home-view" class="view active">
+            <h1>Welcome to Mini Quiz</h1>
+            <p>Select a subject to begin:</p>
+            <div class="options-grid">
+                <!-- Java shows chapters first -->
+                <button onclick="showChaptersView()">Java</button>
+                <!-- CSS and Python start directly -->
+                <button onclick="startQuiz('CSS')">CSS</button>
+                <button onclick="startQuiz('Python')">Python</button>
+            </div>
+        </div>
+
+        <!-- --- JAVA CHAPTERS VIEW --- -->
+        <div id="chapters-view" class="view hidden">
+            <h2>Java Chapters covered</h2>
+            <ul class="chapters-list">
+                <li>OOP Concepts</li>
+                <li>JVM, JIT, Bytecode</li>
+                <li>Basic Programming Constructs</li>
+                <li>Class, Object, Packages</li>
+                <li>Array, String, Vector</li>
+                <li>Inheritance, Polymorphism, Abstraction</li>
+                <li>Exception Handling & Multithreading</li>
+                <li>GUI Programming</li>
+            </ul>
+            <div class="action-buttons">
+                <!-- Starts default Java easy quiz -->
+                <button onclick="startQuiz('Java')">Start Java Quiz</button>
+                <button class="secondary" onclick="goHome()">Go Back</button>
+            </div>
+        </div>
+
+        <!-- --- QUIZ VIEW --- -->
+        <div id="quiz-view" class="view hidden">
+            <h2 id="quiz-title">Quiz</h2>
+            <div class="progress">Question <span id="current-q-num">1</span> of 10</div>
+            
+            <div class="question-container">
+                <h3 id="question-text">Question goes here?</h3>
+                <div id="options-container" class="options-wrapper">
+                    <!-- Options injected here by JS -->
+                </div>
+            </div>
+            <!-- Feedback for visual response -->
+            <p id="feedback-text" class="feedback"></p>
+        </div>
+
+        <!-- --- RESULT VIEW --- -->
+        <div id="result-view" class="view hidden">
+            <h2>Quiz Completed!</h2>
+            <div class="score-display">
+                <span id="final-score">0</span> / 10
+            </div>
+            <p id="result-message">Good job!</p>
+            
+            <div class="action-buttons">
+                <!-- Retry triggers harder difficulty -->
+                <button onclick="retryQuiz()">Retry (Harder)</button>
+                <button class="secondary" onclick="goHome()">Home</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Link to basic logic -->
+    <script src="script.js"></script>
+</body>
+</html>
